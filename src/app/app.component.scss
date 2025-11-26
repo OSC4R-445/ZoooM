@@ -1,0 +1,99 @@
+:host {
+  display: block;
+}
+
+// Estilos del Carousel MDB (Se mantiene)
+.carousel-item img {
+  height: 500px;
+  object-fit: cover;
+}
+
+.carousel-caption {
+  background: rgba(0, 0, 0, 0.5);
+  border-radius: 10px;
+  padding: 20px;
+}
+
+// Estilos de las Cards (Consolidado)
+.product-card {
+  height: 100%;
+  cursor: pointer;
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+  }
+}
+
+// Estilos internos de la Card
+mat-card img {
+  height: 200px;
+  object-fit: cover;
+}
+
+.price {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #1976d2;
+  margin: 10px 0;
+}
+
+mat-chip {
+  margin: 5px 0;
+}
+
+// Estilos mejorados para el panel de información (ahora ocupa toda la fila)
+.info-panel {
+  border-left: 5px solid #007bff;
+  animation: fadeIn 0.5s;
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  border-radius: 12px;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+  
+  h1 {
+    margin-bottom: 20px;
+    border-bottom: 2px solid #dee2e6;
+    padding-bottom: 10px;
+    
+    span {
+      display: inline-block;
+      margin-left: 10px;
+    }
+  }
+  
+  .badge {
+    font-size: 1.1rem;
+    border-radius: 8px;
+  }
+  
+  p {
+    margin-bottom: 15px;
+    line-height: 1.6;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+// Efecto para card seleccionada (opcional)
+.product-card.selected {
+  border: 2px solid #1976d2;
+  box-shadow: 0 8px 25px rgba(25, 118, 210, 0.3) !important;
+}
+
+.product-row {
+  margin-bottom: 2rem;
+  
+  &:last-child {
+    margin-bottom: 0;
+  }
+}

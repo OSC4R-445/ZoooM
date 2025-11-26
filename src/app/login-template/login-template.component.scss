@@ -1,0 +1,65 @@
+.login-container {
+  max-width: 400px;
+  margin: 50px auto;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.form-field {
+  margin-bottom: 1.5rem;
+  display: block; // Asegura que sea block
+  
+  label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+  }
+}
+
+.form-input {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  font-size: 14px;
+  display: block; // Asegura display block
+  
+  &.error {
+    border-color: #dc3545;
+    box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, 0.25);
+  }
+}
+
+// Contenedor de errores - CRÍTICO
+.error-messages {
+  display: block; // Forzar display block
+  width: 100%;
+  margin-top: 0.5rem;
+  
+  .error-text {
+    color: #dc3545;
+    font-size: 12px;
+    margin: 2px 0;
+    display: block; // Cada error en su propia línea
+  }
+}
+
+.submit-btn {
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  width: 100%;
+  font-size: 16px;
+  font-weight: bold;
+  background-color: #007bff;
+  color: white;
+  
+  &:disabled {
+    background-color: #6c757d;
+    cursor: not-allowed;
+  }
+}

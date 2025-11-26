@@ -1,0 +1,118 @@
+<div class="container my-5">
+  <header class="header">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <div class="container-fluid">
+        <!-- Logo  -->
+        <a class="navbar-brand" href="/">ZoooM</a>
+        
+        <!-- Botones de navegación -->
+        <div class="d-flex align-items-center">
+          <!-- Botón de Login con icono MDB -->
+          <a 
+            class="btn btn-primary btn-sm d-flex align-items-center" 
+            routerLink="/login"
+            mdbRipple>
+            <i class="fas fa-sign-in-alt me-2"></i>
+            Login
+          </a>
+        </div>
+      </div>
+    </nav>
+  </header>
+</div>
+
+<div class="container my-5">
+  <div class="row justify-content-center">
+    <!-- Componente Carousel (MDBoostrap) -->
+    <div class="col-md-10">
+      <mdb-carousel [controls]="true" [indicators]="true" [animation]="'fade'">
+        <mdb-carousel-item>
+          <img
+            src="https://mdbcdn.b-cdn.net/img/new/slides/041.webp"
+            class="d-block w-100"
+            alt="Nature 1"
+          />
+          <div class="carousel-caption d-none d-md-block">
+            <h5>Primer Slide</h5>
+            <p>Descripción del primer slide del carousel.</p>
+          </div>
+        </mdb-carousel-item>
+
+        <mdb-carousel-item>
+          <img
+            src="https://mdbcdn.b-cdn.net/img/new/slides/042.webp"
+            class="d-block w-100"
+            alt="Nature 2"
+          />
+          <div class="carousel-caption d-none d-md-block">
+            <h5>Segundo Slide</h5>
+            <p>Descripción del segundo slide del carousel.</p>
+          </div>
+        </mdb-carousel-item>
+
+        <mdb-carousel-item>
+          <img
+            src="https://mdbcdn.b-cdn.net/img/new/slides/043.webp"
+            class="d-block w-100"
+            alt="Nature 3"
+          />
+          <div class="carousel-caption d-none d-md-block">
+            <h5>Tercer Slide</h5>
+            <p>Descripción del tercer slide del carousel.</p>
+          </div>
+        </mdb-carousel-item>
+      </mdb-carousel>
+    </div>
+  </div>
+</div>
+
+<div class="container my-5">
+  <h2 class="text-center mb-4">Productos Destacados</h2>
+
+  <!-- Productos divididos en filas de 4 elementos cada una -->
+  <div *ngFor="let fila of filasProductos; let i = index" class="product-row">
+    
+    <!-- Fila de cards -->
+    <div class="row">
+      <div
+        class="col-md-4 col-lg-3 mb-4 d-flex align-items-stretch"
+        *ngFor="let producto of fila"
+      >
+        <mat-card
+          class="h-100 product-card w-100"
+          [routerLink]="['/producto', producto.id]"
+          style="cursor: pointer; transition: transform 0.3s;"
+        >
+          <img
+            mat-card-image
+            [src]="producto.imagenUrl"
+            [alt]="producto.nombre"
+            style="height: 200px; object-fit: cover;"
+          />
+          <mat-card-content>
+            <h3>{{ producto.nombre }}</h3>
+            <p class="price">
+              {{ producto.precio | currency : 'USD' : 'symbol' : '1.2-2' }}
+            </p>
+            <mat-chip
+              [color]="
+                producto.tipoEnvio === 'Envío gratis'
+                  ? 'primary'
+                  : producto.tipoEnvio === 'Envío express'
+                  ? 'accent'
+                  : 'warn'
+              "
+              highlighted
+            >
+              {{ producto.tipoEnvio }}
+            </mat-chip>
+          </mat-card-content>
+          <mat-card-actions>
+            <button mat-raised-button color="primary">Comprar</button>
+            <button mat-button>Detalles</button>
+          </mat-card-actions>
+        </mat-card>
+      </div>
+    </div>
+  </div>
+</div>
