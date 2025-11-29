@@ -7,6 +7,9 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { DescripcionComponent } from './descripcion/descripcion.component';
 import { LoginTemplateComponent } from './login-template/login-template.component';
+import { PreferenciasComponent } from './preferencias/preferencias.component';
+import { CatalogoComponent } from './catalogo/catalogo.component';
+import { CarritoComponent } from './carrito/carrito.component';
 
 
 // MDB Modules
@@ -46,6 +49,9 @@ const routes: Routes = [
     HomeComponent,
     DescripcionComponent,
     LoginTemplateComponent,
+    PreferenciasComponent,
+    CatalogoComponent,
+    CarritoComponent,
   ],
   imports: [
     BrowserModule,
