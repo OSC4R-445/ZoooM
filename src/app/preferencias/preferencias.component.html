@@ -1,1 +1,44 @@
-<p>preferencias works!</p>
+<div class="preferencias-container">
+  <h2>Registro de Preferencias</h2>
+  
+  <form [formGroup]="preferenciasForm" (ngSubmit)="onSubmit()">
+    <div formArrayName="preferencias">
+      <div *ngFor="let preferencia of preferenciasArray.controls; let i = index" class="preferencia-item">
+        <div class="input-group">
+          <input 
+            type="text" 
+            [formControlName]="i"
+            placeholder="Ingresa tu preferencia"
+            class="form-control"
+          >
+          <button 
+            type="button" 
+            (click)="eliminarPreferencia(i)"
+            class="btn btn-danger"
+            *ngIf="preferenciasArray.length > 1"
+          >
+            Eliminar
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="buttons-container">
+      <button 
+        type="button" 
+        (click)="agregarPreferencia()"
+        class="btn btn-primary"
+      >
+        Agregar Preferencia
+      </button>
+      
+      <button 
+        type="submit" 
+        class="btn btn-success"
+        [disabled]="!preferenciasForm.valid"
+      >
+        Guardar Preferencias
+      </button>
+    </div>
+  </form>
+</div>

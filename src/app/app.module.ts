@@ -40,6 +40,9 @@ const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'producto/:id', component: DescripcionComponent },
   { path: 'login', component: LoginTemplateComponent }, 
+  { path: 'preferencias', component: PreferenciasComponent},
+  { path: 'catalogo', component: CatalogoComponent},
+  { path: 'carrito', component: CarritoComponent},
   { path: '**', redirectTo: '' }
 ];
 

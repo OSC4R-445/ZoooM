@@ -1,1 +1,55 @@
-<p>carrito works!</p>
+<div class="carrito-container">
+  <div class="carrito-header">
+    <h2>🛒 Tu Carrito de Compras</h2>
+    <div class="carrito-stats">
+      <span class="total-productos">{{ productos.length }} producto(s)</span>
+      <span class="total-precio">Total: ${{ calcularTotal() }}</span>
+    </div>
+  </div>
+
+  <div class="carrito-content">
+    <div *ngIf="productos.length === 0" class="carrito-vacio">
+      <p>Tu carrito está vacío</p>
+      <span>¡Agrega algunos productos desde el catálogo!</span>
+    </div>
+
+    <div *ngIf="productos.length > 0" class="lista-productos">
+      <div *ngFor="let producto of productos; let i = index" class="producto-carrito">
+        <div class="producto-info">
+          <img
+            [src]="producto.imagenUrl"
+            [alt]="producto.nombre"
+            style="height: 60px; object-fit: cover; border-radius: 4px;"
+          />
+          <div class="producto-detalles">
+            <h4 class="producto-nombre">{{ producto.nombre }}</h4>
+            <p class="producto-descripcion">{{ producto.descripcion }}</p>
+            <span class="producto-precio">${{ producto.precio }}</span>
+          </div>
+        </div>
+        <button 
+          (click)="eliminarProductoDelCarrito(i)"
+          class="btn btn-eliminar"
+          title="Eliminar del carrito"
+        >
+          🗑️
+        </button>
+      </div>
+    </div>
+
+    <div *ngIf="productos.length > 0" class="carrito-actions">
+      <button 
+        (click)="vaciarCarrito()"
+        class="btn btn-vaciar"
+      >
+        Vaciar Carrito
+      </button>
+      <button 
+        class="btn btn-comprar"
+        [disabled]="productos.length === 0"
+      >
+        Proceder al Pago (${{ calcularTotal() }})
+      </button>
+    </div>
+  </div>
+</div>

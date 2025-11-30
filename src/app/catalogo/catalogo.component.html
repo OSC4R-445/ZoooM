@@ -1,1 +1,48 @@
-<p>catalogo works!</p>
+<div class="catalogo-container">
+  <div class="header">
+    <h2>Catálogo de Productos</h2>
+    <button 
+      (click)="toggleCarrito()" 
+      class="btn btn-carrito"
+    >
+      {{ mostrarCarrito ? 'Ocultar Carrito' : 'Ver Carrito' }} ({{ productosCarrito.length }})
+    </button>
+  </div>
+
+  <div class="catalogo-content">
+    <!-- Sección de productos - siempre visible pero oculta cuando el carrito está activo -->
+    <div class="productos-section" [class.hidden]="mostrarCarrito">
+      <div class="productos-grid">
+        <div *ngFor="let producto of productos" class="producto-card">
+          <img
+            mat-card-image
+            [src]="producto.imagenUrl"
+            [alt]="producto.nombre"
+            style="height: 200px; object-fit: cover;"
+          />
+          <div class="producto-info">
+            <h3 class="producto-nombre">{{ producto.nombre }}</h3>
+            <p class="producto-descripcion">{{ producto.descripcion }}</p>
+            <p class="producto-precio">${{ producto.precio }}</p>
+            <p class="producto-envio" *ngIf="producto.tipoEnvio">{{ producto.tipoEnvio }}</p>
+            <button 
+              (click)="agregarAlCarrito(producto)"
+              class="btn btn-agregar"
+            >
+              🛒 Agregar al Carrito
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Componente carrito - solo visible cuando mostrarCarrito es true -->
+    <div class="carrito-section" *ngIf="mostrarCarrito">
+      <app-carrito 
+        [productos]="productosCarrito"
+        (eliminarProducto)="eliminarDelCarrito($event)"
+        (vaciarCarritoEvent)="vaciarCarritoCompleto()">
+      </app-carrito>
+    </div>
+  </div>
+</div>
